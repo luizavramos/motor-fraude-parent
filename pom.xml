@@ -12,21 +12,17 @@
     <name>Motor de Detecção de Transações Suspeitas</name>
     <description>Pom pai (repositório motor-fraude-parent): versões, dependencyManagement e pluginManagement compartilhados pelos serviços.</description>
 
-
     <properties>
         <java.version>21</java.version>
 
-        <!-- Versões dos artefatos compartilhados, publicados pelos repositórios contracts e platform-commons -->
         <contracts.version>0.1.0</contracts.version>
         <platform-commons.version>0.1.0</platform-commons.version>
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- Plataforma (constituição v1.1): o BOM do Boot fixa Jackson 3, Kafka, Micrometer, Logback, JUnit e Testcontainers 2 -->
         <spring-boot.version>4.0.9</spring-boot.version>
 
-        <!-- Bibliotecas fora do BOM do Boot -->
         <json-schema-validator.version>3.0.9</json-schema-validator.version>
         <logstash-logback-encoder.version>9.0</logstash-logback-encoder.version>
         <archunit.version>1.5.1</archunit.version>
@@ -34,7 +30,6 @@
         <hdrhistogram.version>2.2.2</hdrhistogram.version>
         <bucket4j.version>8.22.0</bucket4j.version>
 
-        <!-- Plugins -->
         <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
         <maven-resources-plugin.version>3.5.0</maven-resources-plugin.version>
         <maven-compiler-plugin.version>3.16.0</maven-compiler-plugin.version>
@@ -61,7 +56,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- Módulos do projeto -->
             <dependency>
                 <groupId>br.com.motorfraude</groupId>
                 <artifactId>contracts</artifactId>
@@ -85,7 +79,6 @@
                 <type>test-jar</type>
             </dependency>
 
-            <!-- Bibliotecas fora do BOM do Boot -->
             <dependency>
                 <groupId>com.networknt</groupId>
                 <artifactId>json-schema-validator</artifactId>
@@ -142,13 +135,11 @@
                     </configuration>
                 </plugin>
                 <plugin>
-                    <!-- Testes unitários: *Test -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <!-- Testes de integração: *IT, rodam em verify -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>${maven-failsafe-plugin.version}</version>
@@ -199,7 +190,6 @@
                     <version>${jacoco-maven-plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <!-- Só nos serviços Spring (001, 002, 005) -->
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
@@ -226,8 +216,6 @@
                                     <version>[3.9,)</version>
                                 </requireMavenVersion>
                                 <bannedDependencies>
-                                    <!-- Jackson 3 em todo o projeto (constituição v1.1, plan 000 §2).
-                                         jackson-annotations continua em com.fasterxml no Jackson 3 e é permitido. -->
                                     <excludes>
                                         <exclude>com.fasterxml.jackson.core:jackson-databind</exclude>
                                         <exclude>com.fasterxml.jackson.core:jackson-core</exclude>
@@ -278,9 +266,6 @@
         </plugins>
     </build>
 
-    <!-- Artefatos compartilhados: GitHub Packages (repositórios privados). Leitura e escrita exigem um token
-         configurado no ~/.m2/settings.xml com o id github-motor-fraude (ver README). Sem registry, use ./mvnw install
-         nos repositórios motor-fraude-parent, contracts e platform-commons, nessa ordem. -->
     <repositories>
         <repository>
             <id>github-motor-fraude</id>
