@@ -11,10 +11,10 @@ Repositório de visão geral, documentação e infraestrutura local: https://git
 ```
 
 ## Token do GitHub Packages
-Os repositórios são privados, então ler e publicar artefatos exige um token pessoal com `read:packages` (e `write:packages` para publicar). Em `~/.m2/settings.xml`:
+Os repositórios são públicos, mas o GitHub Packages exige token mesmo para baixar: é preciso um token pessoal com `read:packages` (e `write:packages` para publicar). Em `~/.m2/settings.xml`:
 ```xml
 <settings><servers><server>
   <id>github-motor-fraude</id><username>SEU_USUARIO</username><password>SEU_TOKEN</password>
 </server></servers></settings>
 ```
-Sem registry, instale localmente na ordem: motor-fraude-parent, contracts, platform-commons.
+Sem token, instale localmente na ordem: motor-fraude-parent, contracts, platform-commons.
