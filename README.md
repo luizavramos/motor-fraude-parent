@@ -2,7 +2,7 @@
 
 Pom pai dos serviços do motor de detecção de transações suspeitas: versões do Spring Boot e das bibliotecas, `pluginManagement`, regras do enforcer (Java 21, Jackson 3, convergência de dependências) e Jacoco.
 
-Repositório de visão geral, specs e infraestrutura local: https://github.com/luizavramos/motor-fraude
+Repositório de visão geral, specs e infraestrutura local: https://github.com/luizavramos/fraud-detection-engine
 
 ## Publicar
 ```bash
